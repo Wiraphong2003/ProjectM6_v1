@@ -1,25 +1,134 @@
 <div class="container">
   <div class="row" style="margin-top: 50px;">
-    <div class="col-sm-6">
+    <div class="col-sm-5">
       <img src="" alt="" width="500" height="500">
-    </div>
-    <div class="col-sm-3" style="display: flex;">
-      <div class="row" style="display: grid;">
-        <button type="button" class="btn btn-outline-primary" style="padding: auto;margin-top: 5px;">Text Color
-          image</button>
-        <button type="button" class="btn btn-outline-primary" style="padding: auto;margin-top: 5px;">Edit
-          Number</button>
-        <button type="button" class="btn btn-outline-primary" style="padding: auto;margin-top: 5px;">Move index
-          Number</button>
+      <div class="row" style="margin-top: 50px; width: 100%;;">
+        <div class="col-sm" style="display: grid; margin: auto;">
+          <button type="button" class="btn btn-outline-primary" style="margin-top: 5px;">Color</button>
+          <button type="button" class="btn btn-outline-primary" style="margin-top: 5px;">Move</button>
+          <button type="button" class="btn btn-outline-primary" style="margin-top: 5px;">set Number</button>
+        </div>
+
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Default checkbox
-        </label>
       </div>
+      <div class="col-sm-7">
+        <div class="row">
+          <div class="col-sm">
+            <p>รายวัน</p>
+            <div class="form-check" *ngFor="let date of this.t1">
+              <input class="form-check-input" type="checkbox" value="checked" id="flexCheckDefault"
+                (change)="checkbox(date.lid)">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{date.name}}
+              </label>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <p>หุ้น</p>
+            <div class="form-check" *ngFor="let date of this.t2">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{date.name}}
+              </label>
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <p>VIP</p>
+            <div class="form-check" *ngFor="let date of this.t3">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{date.name}}
+
+              </label>
+            </div>
+          </div>
+          <div class="col-sm">
+            <p>ต่างประเทศ</p>
+            <div class="form-check" *ngFor="let date of this.t4">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{date.name}}
+
+              </label>
+            </div>
+          </div>
+          <div class="col-sm">
+            <p>รัฐบาล</p>
+            <div class="form-check" *ngFor="let date of this.t5">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                {{date.name}}
+              </label>
+            </div>
+          </div>
+
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  All รายวัน
+                </label>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  All หุ้น
+                </label>
+              </div>
+            </div>
+
+            <div class="col-sm">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  All VIP
+                </label>
+              </div>
+            </div>
+<div class="col-sm">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+                    All ต่างประเทศ
+                    </label>
+                    </div>
+                    </div>
+<div class="col-sm">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault"> All รัฐบาล</label>
+  </div>
+</div>
+</div>
+
+
+<div class="row" style="margin-top: 20px;">
+  <div class="col-sm">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="checked">
+      <label class="form-check-label" for="flexCheckDefault">All</label>
     </div>
   </div>
+</div>
+</div>
+
+
+</div>
+
+
+<!-- <div class="row" style="margin-top: 50px;">
+    <div class="col-sm">
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+    </div>
+</div> -->
+
 </div>
