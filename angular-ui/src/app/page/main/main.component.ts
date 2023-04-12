@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  toppings = this._formBuilder.group({
+    pepperoni: false,
+    extracheese: false,
+    mushroom: false,
+  });
 
+  constructor(private _formBuilder: FormBuilder) { }
 }
