@@ -33,7 +33,7 @@ export class LoginComponent {
     // http://localhost:3000/login
 
 
-    this.http.post('http://localhost:3000/login', JSON.stringify(json))
+    this.http.post('http://localhost:8000/login', JSON.stringify(json))
       .subscribe(Response => {
         console.log(json);
 

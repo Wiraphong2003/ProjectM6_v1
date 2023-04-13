@@ -10,120 +10,111 @@
         </div>
 
       </div>
-      </div>
-      <div class="col-sm-7">
-        <div class="row">
-          <div class="col-sm">
-            <p>รายวัน</p>
-            <div class="form-check" *ngFor="let date of this.t1">
-              <input class="form-check-input" type="checkbox" value="checked" id="flexCheckDefault"
-                (change)="checkbox(date.lid)">
-              <label class="form-check-label" for="flexCheckDefault">
-                {{date.name}}
-              </label>
-            </div>
-          </div>
-
-          <div class="col-sm">
-            <p>หุ้น</p>
-            <div class="form-check" *ngFor="let date of this.t2">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                {{date.name}}
-              </label>
-            </div>
-          </div>
-
-          <div class="col-sm">
-            <p>VIP</p>
-            <div class="form-check" *ngFor="let date of this.t3">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                {{date.name}}
-
-              </label>
-            </div>
-          </div>
-          <div class="col-sm">
-            <p>ต่างประเทศ</p>
-            <div class="form-check" *ngFor="let date of this.t4">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                {{date.name}}
-
-              </label>
-            </div>
-          </div>
-          <div class="col-sm">
-            <p>รัฐบาล</p>
-            <div class="form-check" *ngFor="let date of this.t5">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                {{date.name}}
-              </label>
-            </div>
-          </div>
-
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  All รายวัน
-                </label>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  All หุ้น
-                </label>
-              </div>
-            </div>
-
-            <div class="col-sm">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  All VIP
-                </label>
-              </div>
-            </div>
-<div class="col-sm">
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-    <label class="form-check-label" for="flexCheckDefault">
-                    All ต่างประเทศ
-                    </label>
-                    </div>
-                    </div>
-<div class="col-sm">
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-    <label class="form-check-label" for="flexCheckDefault"> All รัฐบาล</label>
-  </div>
-</div>
-</div>
-
-
-<div class="row" style="margin-top: 20px;">
-  <div class="col-sm">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="checked">
-      <label class="form-check-label" for="flexCheckDefault">All</label>
     </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm">
+          <p style="text-align: center;">รายวัน</p>
+          <section class="example-section" *ngFor="let data of t1" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data.lid)">
+              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+            </mat-checkbox>
+          </section>
+        </div>
+
+        <div class="col-sm">
+          <p style="text-align: center;">หุ้น</p>
+          <section class="example-section" *ngFor="let data of t2" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+            </mat-checkbox>
+          </section>
+        </div>
+
+        <div class="col-sm">
+          <p style="text-align: center;">VIP</p>
+          <section class="example-section" *ngFor="let data of t3" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+            </mat-checkbox>
+          </section>
+        </div>
+        <div class="col-sm">
+          <p style="text-align: center;">ต่างประเทศ</p>
+          <section class="example-section" *ngFor="let data of t4" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+            </mat-checkbox>
+          </section>
+        </div>
+        <div class="col-sm">
+          <p style="text-align: center;">รัฐบาล</p>
+          <section class="example-section" *ngFor="let data of t5" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
+            </mat-checkbox>
+          </section>
+        </div>
+
+      </div>
+      <hr>
+      <!--
+      <div class="row">
+        <div class="col-sm">
+          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;"> ALL รายวัน</p>
+            </mat-checkbox>
+          </section>
+          </div>
+          <div class="col-sm">
+          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">ALL หุ้น</p>
+            </mat-checkbox>
+          </section>
+          </div>
+
+        <div class="col-sm">
+          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">ALL VIP</p>
+            </mat-checkbox>
+          </section>
+          </div>
+          <div class="col-sm">
+          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">ALL ต่างประเทศ</p>
+            </mat-checkbox>
+          </section>
+          </div>
+          <div class="col-sm">
+          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
+              <p style="font-family: K2D;margin: 0px;">ALL รัฐบาล</p>
+            </mat-checkbox>
+          </section>
+          </div>
+          </div> -->
+
+
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-sm">
+          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data.lid)">
+              <p style="font-family: K2D;margin: 0px;">Select All</p>
+            </mat-checkbox>
+          </section>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-</div>
-</div>
 
 
-</div>
-
-
-<!-- <div class="row" style="margin-top: 50px;">
+  <!-- <div class="row" style="margin-top: 50px;">
     <div class="col-sm">
       <button type="button" class="btn btn-outline-primary">Primary</button>
       <button type="button" class="btn btn-outline-primary">Primary</button>

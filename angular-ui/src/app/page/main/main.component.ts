@@ -63,25 +63,9 @@ export class MainComponent {
     // console.log(this.checked);
     console.log(lid);
 
-    // const result = this.All.some((obj: any) => {
-    //   return obj.id === lid;
-    // });
-
-    // if (result) {
-    //   // 👇️ this runs
-    //   console.log('✅ The value is contained in array');
-    // } else {
-    const s  = this.All.push(lid);
-    console.log(s);
-
-    //   console.log('⛔️ The value is NOT contained in array');
-    // }
 
     console.log(this.All);
-
   }
-
-
 }
 
 // https://thankful-blue-bullfrog.cyclic.app/read
