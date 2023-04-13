@@ -1,14 +1,28 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 
+import { Browser, getComponent } from '@syncfusion/ej2-base';
+import { ImageEditorComponent } from '@syncfusion/ej2-angular-image-editor';
+import { Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  @ViewChild('ImageEditor')
+  public ImageEditorInstance!: ImageEditorComponent;
+  public toolbarItems: string[] = ['Annotate', 'Text', 'Rectangle', 'Ellipse'];
+  public created = (): void => {
+    this.ImageEditorInstance.open("https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg");
+  }
+  public text = (): void => {
+    this.ImageEditorInstance.drawText(50, 50, 'Syncfusion');
+  }
+
   Lottary !: any;
   t1 !: any;
   t2 !: any;
@@ -24,10 +38,12 @@ export class MainComponent {
   value: any[] = [];
   isSelected = false;
 
+
+
   constructor(
     private dataService: ServiceService,
     private http: HttpClient,
-
+    @Inject(DOCUMENT) document: Document
   ) {
 
     http.get(dataService.apiEndpoint + '/Lottary/1').subscribe((data: any) => {
@@ -63,65 +79,86 @@ export class MainComponent {
 
   }
 
-  // checkbox(obj: any) {
-  //   // console.log(this.checked);
-  //   console.log(obj.lid);
 
-  //   let lid = obj.lid;
-  //   let isck = false;
-  //   this.ALL1.forEach(element => {
-  //     if (element.lid == obj.lid) {
-  //       console.log(true);
-  //       isck = true;
-  //     } else {
-  //       isck = false;
-  //     }
-  //   });
 
-  //   console.log(isck);
-  //   if (isck) {
-  //     console.log(false);
-  //     this.ALL1.forEach((element, index) => {
-  //       if (element.lid == lid) {
-  //         this.ALL1.splice(index, 1);
-  //       }
-  //     });
-  //   }
-  //   else {
-  //     this.ALL1.push(obj);
-  //   }
 
-  //   console.log(this.ALL1);
-  // }
+// checkbox(obj: any) {
+//   // console.log(this.checked);
+//   console.log(obj.lid);
 
-  checkbox(obj: any) {
-    const lid = obj.lid;
-    const index = this.ALL1.findIndex((element) => element.lid === lid);
-    console.log(lid);
+//   let lid = obj.lid;
+//   let isck = false;
+//   this.ALL1.forEach(element => {
+//     if (element.lid == obj.lid) {
+//       console.log(true);
+//       isck = true;
+//     } else {
+//       isck = false;
+//     }
+//   });
 
-    if (index >= 0) {
-      // The checkbox is already selected, so remove it from the array
-      this.ALL1.splice(index, 1);
-    } else {
-      // The checkbox is not selected, so add it to the array
-      this.ALL1.push(obj);
+//   console.log(isck);
+//   if (isck) {
+//     console.log(false);
+//     this.ALL1.forEach((element, index) => {
+//       if (element.lid == lid) {
+//         this.ALL1.splice(index, 1);
+//       }
+//     });
+//   }
+//   else {
+//     this.ALL1.push(obj);
+//   }
 
-      // Remove any existing items from the array with the same `lid` value
-      // this.ALL1 = this.ALL1.filter((element) => element.lid !== lid);
-    }
+//   console.log(this.ALL1);
+// }
 
+checkbox(obj: any) {
+  const lid = obj.lid;
+  const index = this.ALL1.findIndex((element) => element.lid === lid);
+  console.log(lid);
+
+  if (index >= 0) {
+
+    // The checkbox is already selected, so remove it from the array
+    this.ALL1.splice(index, 1);
+  } else {
+    // The checkbox is not selected, so add it to the array
+    this.ALL1.push(obj);
+
+    // Remove any existing items from the array with the same `lid` value
+    // this.ALL1 = this.ALL1.filter((element) => element.lid !== lid);
+  }
+
+  console.log(this.ALL1);
+}
+
+
+checkALL() {
+  console.log("Check ALL");
+  if (this.isSelected) {
+    this.isSelected = false
+    this.remove();
+  } else {
+    this.isSelected = true
+    this.remove();
     console.log(this.ALL1);
+    this.Lottary.forEach((element: any) => {
+      this.ALL1.push(element)
+    });
   }
+  console.log(this.ALL1);
+}
+checkis(ischk: boolean) {
+  if (ischk) {
 
+  } else {
 
-  checkALL() {
-    console.log("Check ALL");
-    if (this.isSelected){
-      this.isSelected =false
-    }else{
-      this.isSelected = true
-    }
   }
+}
+remove() {
+  this.ALL1 = this.ALL1.filter(item => item !== item);
+}
 
 }
 

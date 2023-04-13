@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { ImageEditorModule } from '@syncfusion/ej2-angular-image-editor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     MainComponent
   ],
   imports: [
+    ImageEditorModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

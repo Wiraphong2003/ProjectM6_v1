@@ -1,7 +1,31 @@
 <div class="container">
   <div class="row" style="margin-top: 50px;">
     <div class="col-sm-5">
-      <img src="" alt="" width="500" height="500">
+      
+      <img src="https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg" alt="" width="500"
+        height="500">
+
+      <!-- <div>
+                    <div id="wrapperDiv" style="width: 550px; height: 350px;">
+                      <ejs-imageeditor (created)="created()" #ImageEditor>
+                        <ng-template #toolbarTemplate let-data>
+                          <div style="padding: 10px; border-bottom: 1px solid darkgray;">
+                            <button class="e-btn" (click)="text()">Add Text</button>
+                          </div>
+                        </ng-template>
+                      </ejs-imageeditor>
+                    </div>
+                  </div> -->
+
+
+      <!-- <canvas id="myCanvas" width="578" height="400"></canvas>
+      <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText("Hello World", 10, 50);
+      </script> -->
+
       <div class="row" style="margin-top: 50px; width: 100%;;">
         <div class="col-sm" style="display: grid; margin: auto;">
           <button type="button" class="btn btn-outline-primary" style="margin-top: 5px;">Color</button>
@@ -17,7 +41,8 @@
         <div class="col-sm">
           <p style="text-align: center;">รายวัน</p>
           <section class="example-section" *ngFor="let data of t1" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+              [checked]="isSelected">
               <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
             </mat-checkbox>
           </section>
@@ -26,7 +51,8 @@
         <div class="col-sm">
           <p style="text-align: center;">หุ้น</p>
           <section class="example-section" *ngFor="let data of t2" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+              [checked]="isSelected">
               <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
             </mat-checkbox>
           </section>
@@ -35,7 +61,8 @@
         <div class="col-sm">
           <p style="text-align: center;">VIP</p>
           <section class="example-section" *ngFor="let data of t3" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+              [checked]="isSelected">
               <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
             </mat-checkbox>
           </section>
@@ -43,16 +70,18 @@
         <div class="col-sm">
           <p style="text-align: center;">ต่างประเทศ</p>
           <section class="example-section" *ngFor="let data of t4" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)">
+            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
+              [checked]="isSelected">
               <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
             </mat-checkbox>
           </section>
         </div>
         <div class="col-sm">
           <p style="text-align: center;">รัฐบาล</p>
-          <section class="example-section" *ngFor="let data of t5 let i = index" style="margin: 0px;font-family:K2D, sans-serif;">
+          <section class="example-section" *ngFor="let data of t5 let i = index"
+            style="margin: 0px;font-family:K2D, sans-serif;">
             <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkbox(data)"
-            [checked]="isSelected">
+              [checked]="isSelected">
               <p style="font-family: K2D;margin: 0px;">{{data.name}}</p>
             </mat-checkbox>
           </section>
@@ -113,8 +142,8 @@
           </section>
         </div>
       </div>
-
     </div>
+    {{ALL1|json}}
   </div>
 
 
