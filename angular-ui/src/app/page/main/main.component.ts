@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ServiceService } from 'src/app/service.service';
 
@@ -13,6 +13,8 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  @ViewChild('myCanvas')
+  private myCanvas: ElementRef = {} as ElementRef;
   @ViewChild('ImageEditor')
   public ImageEditorInstance!: ImageEditorComponent;
   public toolbarItems: string[] = ['Annotate', 'Text', 'Rectangle', 'Ellipse'];
