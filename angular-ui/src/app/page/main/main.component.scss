@@ -100,3 +100,21 @@ canvas {
 #canvasID {
   z-index: 9999;
 }
+.image-with-text {
+  position: relative;
+  display: inline-block;
+}
+
+.image-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}

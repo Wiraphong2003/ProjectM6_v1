@@ -7,8 +7,32 @@
   <div class="row" style="margin-top: 50px;">
     <div class="col-sm-5">
 
-      <!-- <img src="https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg" alt="" width="500"
-                                      height="500"> -->
+      <!-- <img src="{{imageuser}}" alt="" width="500" height="500"> -->
+      <!-- <canvas #canvas width="500" height="500"></canvas>
+                                                            <br />
+                                                            <button (click)="drawImages()">Draw Images</button>
+                                                            <canvas id="test" style="border: 1px solid blue;"></canvas>
+                                                            <br> -->
+      
+      <canvas #canvas style="border: 1px solid" width="500" height="500">
+        imgsss
+      </canvas>
+      <!-- <div>
+              <button (click)="downloadImagesALL(images, 'myImages')">Download All Images</button>
+            </div> -->
+      <!-- <div class="row" *ngFor="let item of Arraycanvas">
+                    {{item}}
+                    <canvas #Arraycanvas  style="border: 1px solid" width="500" height="500"></canvas>
+                  </div> -->
+      
+      <!-- <div *ngFor="let a of Arraycanvas;index as i; trackBy:trackByFn">
+                    <canvas attr.id="canvas-{{i}}" ></canvas>
+                  </div> -->
+      <!-- (click)="myDrawingFunction(i)" -->
+      <div *ngFor="let image of imagesD">
+        <img [src]="image.src" [alt]="image.alt" class="image-with-text" width="500" height="500">
+        <button (click)="downloadImage(image.src, image.alt)">Download</button>
+      </div>
 
 
 
@@ -120,11 +144,22 @@
 
 
       <div class="row" style="margin-top: 20px;">
-        <div class="col-sm">
+        <div class="col-sm-3">
           <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
             <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;" (change)="checkALL()">
               <p style="font-family: K2D;margin: 0px;">Select All</p>
             </mat-checkbox>
+          </section>
+        </div>
+        <div class="col-sm-9">
+          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
+            <button type="button" (click)="createImage()" class="btn btn-success" style="margin-top:0px">Create
+              Image</button>
+            <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;margin-left: 20px;">Check
+              Image</button>
+            <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;margin-left: 20px;"
+              (click)="downloadImagesALL(imagesD, 'myImages')">
+              Dowload</button>
           </section>
         </div>
       </div>

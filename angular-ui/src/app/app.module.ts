@@ -20,6 +20,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ImageEditorModule } from '@syncfusion/ej2-angular-image-editor';
+// import { CanvasDomModule } from 'angular-canvas';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { ImageEditorModule } from '@syncfusion/ej2-angular-image-editor';
     MainComponent
   ],
   imports: [
+    // CanvasDomModule,
     ImageEditorModule,
     BrowserModule,
     AppRoutingModule,
