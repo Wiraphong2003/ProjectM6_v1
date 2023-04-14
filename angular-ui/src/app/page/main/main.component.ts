@@ -47,6 +47,8 @@ export class MainComponent {
     private http: HttpClient,
     @Inject(DOCUMENT) document: Document
   ) {
+    
+
 
     http.get(dataService.apiEndpoint + '/Lottary/1').subscribe((data: any) => {
       console.log(data);
