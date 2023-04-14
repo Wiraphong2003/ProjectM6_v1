@@ -39,6 +39,7 @@ export class MainComponent {
   chk: any[] = []
   value: any[] = [];
   isSelected = false;
+  imageuser !: any;
 
 
 
@@ -47,8 +48,14 @@ export class MainComponent {
     private http: HttpClient,
     @Inject(DOCUMENT) document: Document
   ) {
-    
 
+
+    http.get(dataService.apiEndpoint + '/image/user1').subscribe((data: any) => {
+      console.log(data);
+      this.imageuser = data;
+      let img = this.imageuser[0]
+      
+    });
 
     http.get(dataService.apiEndpoint + '/Lottary/1').subscribe((data: any) => {
       console.log(data);
