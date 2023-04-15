@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceService {
-  // apiEndpoint = 'https://thankful-blue-bullfrog.cyclic.app';
-  apiEndpoint = 'http://localhost:3000';
+  apiEndpoint = 'https://thankful-blue-bullfrog.cyclic.app';
+  apiEndpointLocal = 'http://localhost:3000';
   constructor(private httpClient: HttpClient) {
 
   }

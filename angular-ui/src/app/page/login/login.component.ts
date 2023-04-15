@@ -13,6 +13,7 @@ export class LoginComponent {
   hide: any;
   menu: any;
   data!: any;
+  res !: any;
   constructor(private http: HttpClient, private router: Router) {
 
   }
@@ -54,11 +55,19 @@ export class LoginComponent {
         console.log(json);
         console.log("IN LOGIN");
         console.log(Response);
-        if (Response) {
-          console.log("IN OK");
-          // this.router.navigateByUrl('/member/' + this.username);
+        this.res = Response;
+        if (this.res.Boolean === true) {
+          console.log("Login Pass");
           this.router.navigateByUrl('/main');
+        } else {
+          console.log("Login Fial");
+
         }
+        // if (Response) {
+        //   console.log("IN OK");
+        //   // this.router.navigateByUrl('/member/' + this.username);
+        //   this.router.navigateByUrl('/main');
+        // }
       }, Error => {
         console.log("Fail");
       });
