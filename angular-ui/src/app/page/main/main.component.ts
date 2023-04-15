@@ -24,7 +24,7 @@ import { LocalService } from 'src/app/local.service';
 export class MainComponent implements AfterViewInit, OnInit {
   // @ViewChild('canvas') canvas !: ElementRef;
   @ViewChild('canvas', { static: true }) myCanvas !: ElementRef;
-  @ViewChild('Arraycanvas', { static: true }) Arraycanvas: ElementRef[] = [];
+  @ViewChild('Arraycanvas', { static: true }) Arraycanvas!: ElementRef[];
   // @ViewChild('item', { static: true }) myCanvas !: ElementRef;
   ctx!: CanvasRenderingContext2D;
   areAllImagesLoaded = false;
@@ -60,7 +60,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   imageuser !: any;
   name = 'Angular 5';
   listImage: any[] = []
-
+  arrayOfIndexes: any[] = []
   listimages: HTMLCanvasElement[] = [];
 
 
@@ -69,7 +69,8 @@ export class MainComponent implements AfterViewInit, OnInit {
     private dataService: ServiceService,
     private http: HttpClient,
     private local: LocalService,
-    @Inject(DOCUMENT) document: Document
+    @Inject(DOCUMENT) document: Document,
+    private el: ElementRef
   ) {
 
     http.get(dataService.apiEndpoint + '/image/user1').subscribe((data: any) => {
@@ -110,6 +111,126 @@ export class MainComponent implements AfterViewInit, OnInit {
       this.Lottary = data;
     });
 
+  }
+  trackByFn(index: any) {
+    return (index);
+  }
+  async Cimg(ee: any) {
+    this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
+    this.listimages = this.listimages.filter(item => item !== item);
+    console.log(ee);
+
+    for (let index = 0; index < this.ALL1.length; index++) {
+      const element = this.ALL1[index];
+      const nameimg = element.name;
+      console.log(nameimg);
+      this.arrayOfIndexes.push(index)
+
+      let canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
+      const context = canvas.getContext('2d')
+      if (context) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.strokeStyle = 'red';
+        context.fillStyle = 'rgba(17, 0, 255, 0.5)';
+        const img = await this.loadImage(this.local.getData("img1") + '');
+
+        // Calculate the new width and height
+        const newWidth = 500;
+        const newHeight = (img.height / img.width) * newWidth;
+
+        // Draw the resized image on the canvas
+        this.ctx.drawImage(img, 0, 0, newWidth, newHeight);
+        let w = 500;
+        let h = 500;
+        let lenHH = nameimg.length;
+        context.shadowOffsetX = 4;
+        context.shadowOffsetY = 4;
+        context.shadowBlur = 3;
+        context.fillStyle = 'red';
+        context.font = '36px Arial';
+        context.fillText(nameimg, (w / 2) - (lenHH * 9), 145);
+        context.fillText('7', 190, 200);
+        context.fillText('7', 290, 200);
+        let A1 = ["12", "23", "31"];
+        A1.forEach((element, index) => {
+          context.fillText(element, (80 * index) + 150, 250);
+        });
+
+        let A2 = ["11", "22", "32"];
+        A2.forEach((element, index) => {
+          context.fillText(element, (80 * index) + 150, 300);
+        });
+
+        let A3 = ["123", "223", "334", "467"];
+        A3.forEach((element, index) => {
+          context.fillText(element, (80 * index) + 90, 350);
+        });
+        console.log("imgs " + this.ctx);
+
+
+        // Convert the canvas to an image and add it to the array
+        // images.push(await this.canvasToImage(canvas, nameimg));
+        console.log(canvas);
+        this.listimages.push(canvas);
+        console.log(this.listimages);
+      }
+    }
+
+  }
+  async myDrawingFunction(index: number) {
+    //here you retrieve your element by id eg: '#canvas-2'
+    let canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
+    const context = canvas.getContext('2d') //just an example
+    for (let index = 0; index < this.ALL1.length; index++) {
+      const element = this.ALL1[index];
+      const nameimg = element.name;
+      if (context) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.strokeStyle = 'red';
+        context.fillStyle = 'rgba(17, 0, 255, 0.5)';
+        const img = await this.loadImage(this.local.getData("img1") + '');
+
+        // Calculate the new width and height
+        const newWidth = 500;
+        const newHeight = (img.height / img.width) * newWidth;
+
+        // Draw the resized image on the canvas
+        this.ctx.drawImage(img, 0, 0, newWidth, newHeight);
+        let w = 500;
+        let h = 500;
+        let lenHH = nameimg.length;
+        context.shadowOffsetX = 4;
+        context.shadowOffsetY = 4;
+        context.shadowBlur = 3;
+        context.fillStyle = 'red';
+        context.font = '36px Arial';
+        context.fillText(nameimg, (w / 2) - (lenHH * 9), 145);
+        context.fillText('7', 190, 200);
+        context.fillText('7', 290, 200);
+        let A1 = ["12", "23", "31"];
+        A1.forEach((element, index) => {
+          context.fillText(element, (80 * index) + 150, 250);
+        });
+
+        let A2 = ["11", "22", "32"];
+        A2.forEach((element, index) => {
+          context.fillText(element, (80 * index) + 150, 300);
+        });
+
+        let A3 = ["123", "223", "334", "467"];
+        A3.forEach((element, index) => {
+          context.fillText(element, (80 * index) + 90, 350);
+        });
+        console.log("imgs " + this.ctx);
+
+
+        // Convert the canvas to an image and add it to the array
+        // images.push(await this.canvasToImage(canvas, nameimg));
+        console.log(canvas);
+        this.listimages.push(canvas);
+        console.log(this.listimages);
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -199,20 +320,26 @@ export class MainComponent implements AfterViewInit, OnInit {
 
   async createImage(): Promise<HTMLImageElement[]> {
     this.listimages = this.listimages.filter(item => item !== item);
+    this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     const images: HTMLImageElement[] = [];
+    // const Arrcanvas: HTMLCanvasElement[] = [];
 
     for (let i = 0; i < this.ALL1.length; i++) {
       const element = this.ALL1[i];
       const nameimg = element.name;
       const canvas: HTMLCanvasElement = this.myCanvas.nativeElement;
-      const canvass: HTMLCanvasElement = this.Arraycanvas[i].nativeElement;
-      const context = canvas.getContext('2d');
 
+      // Arrcanvas[i] = this.Arraycanvas[i].nativeElement;
+
+
+      // Arrcontext = Arrcanvas[i].getContext('2d');
+
+      const context = canvas.getContext('2d');
       if (context) {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.strokeStyle = 'red';
         context.fillStyle = 'rgba(17, 0, 255, 0.5)';
-        const img = await this.loadImage('https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg');
+        const img = await this.loadImage(this.local.getData("img1") + '');
 
         // Calculate the new width and height
         const newWidth = 500;
@@ -255,10 +382,13 @@ export class MainComponent implements AfterViewInit, OnInit {
         console.log(this.listimages);
         // this.imagesD.push("asdasd",nameimg)
         this.imagesD.push()
+        // this.Arraycanvas.push(canvas);
+        this.arrayOfIndexes.push(i)
 
       }
       console.log(this.imagesD);
       console.log(i);
+
 
     }
     return images;
