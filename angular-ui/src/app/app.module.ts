@@ -21,6 +21,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ImageEditorModule } from '@syncfusion/ej2-angular-image-editor';
 // import { CanvasDomModule } from 'angular-canvas';
+
+
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +32,7 @@ import { ImageEditorModule } from '@syncfusion/ej2-angular-image-editor';
   ],
   imports: [
     // CanvasDomModule,
+    RouterModule,
     ImageEditorModule,
     BrowserModule,
     AppRoutingModule,

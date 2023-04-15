@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import user from 'src/app/jsonF/user.json'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,12 +32,28 @@ export class LoginComponent {
     // https://a1-5ym4.onrender.com/login
     // http://localhost:3000/login
 
+    // this.http.post('http://localhost:3000/login', {
+    //   keyword: json, // changed this
+    //   responseType: 'text',
+    //   headers: Headers,
+    // }).subscribe(Response => {
+    //   console.log(Response);
+    //     console.log("success");
+    //     if (Response) {
+    //       console.log("IN OK");
+    //       // this.router.navigateByUrl('/member/' + this.username);
+    //       this.router.navigateByUrl('/main');
+    //     }
+    // });
 
-    this.http.post('http://localhost:8000/login', JSON.stringify(json))
+    // this.http.post('http://localhost:3000/login', JSON.stringify(json))
+    //   .subscribe((result) => console.log(result));
+
+    this.http.post('http://localhost:3000/login', JSON.stringify(json))
       .subscribe(Response => {
         console.log(json);
-
-        console.log("success");
+        console.log("IN LOGIN");
+        console.log(Response);
         if (Response) {
           console.log("IN OK");
           // this.router.navigateByUrl('/member/' + this.username);
