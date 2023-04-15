@@ -17,22 +17,17 @@
       <canvas #canvas style="border: 1px solid" width="500" height="500">
         imgsss
       </canvas>
-      <!-- <div>
-              <button (click)="downloadImagesALL(images, 'myImages')">Download All Images</button>
-            </div> -->
-      <!-- <div class="row" *ngFor="let item of Arraycanvas">
-                    {{item}}
-                    <canvas #Arraycanvas  style="border: 1px solid" width="500" height="500"></canvas>
-                  </div> -->
+      <div *ngFor="let img of listimages let i = index">
+        <p>{{i}}{{img}}</p>
+        <canvas #Arraycanvas style="border: 1px solid" width="500" height="500">
+          imgsss
+        </canvas>
+      </div>
 
-      <!-- <div *ngFor="let a of Arraycanvas;index as i; trackBy:trackByFn">
-                    <canvas attr.id="canvas-{{i}}" ></canvas>
-                  </div> -->
-      <!-- (click)="myDrawingFunction(i)" -->
-      <div *ngFor="let image of imagesD">
+      <!-- <div *ngFor="let image of imagesD">
         <img [src]="image.src" [alt]="image.alt" class="image-with-text" width="500" height="500">
         <button (click)="downloadImage(image.src, image.alt)">Download</button>
-      </div>
+      </div> -->
 
 
 

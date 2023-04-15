@@ -13,6 +13,7 @@ import { DOCUMENT } from '@angular/common';
 import * as JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import { Image } from './imageD.model';
+import { LocalService } from 'src/app/local.service';
 
 
 @Component({
@@ -35,9 +36,9 @@ export class MainComponent implements AfterViewInit, OnInit {
   //   // ...
   // ];
   imagesD: Image[] = [
-    { src: 'https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg', alt: 'Image 1' },
-    { src: 'https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg', alt: 'Image 2' },
-    { src: 'https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg', alt: 'Image 3' },
+    { src: '' + this.local.getData("img1"), alt: 'Image 1' },
+    { src: '' + this.local.getData("img1"), alt: 'Image 2' },
+    { src: '' + this.local.getData("img1"), alt: 'Image 3' },
   ];
 
 
@@ -67,6 +68,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   constructor(
     private dataService: ServiceService,
     private http: HttpClient,
+    private local: LocalService,
     @Inject(DOCUMENT) document: Document
   ) {
 
@@ -126,7 +128,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.ctx.drawImage(img, 0, 0, newWidth, newHeight);
         // this.#drawText(context);
       };
-      img.src = 'https://i.ibb.co/w4QhYBr/340618868-899903277951742-6679712580878809918-n.jpg';
+      img.src = this.local.getData("img1") + "";
     }
   }
   animate(): void { }
@@ -195,9 +197,6 @@ export class MainComponent implements AfterViewInit, OnInit {
   }
 
 
-
-
-
   async createImage(): Promise<HTMLImageElement[]> {
     this.listimages = this.listimages.filter(item => item !== item);
     const images: HTMLImageElement[] = [];
@@ -206,6 +205,7 @@ export class MainComponent implements AfterViewInit, OnInit {
       const element = this.ALL1[i];
       const nameimg = element.name;
       const canvas: HTMLCanvasElement = this.myCanvas.nativeElement;
+      const canvass: HTMLCanvasElement = this.Arraycanvas[i].nativeElement;
       const context = canvas.getContext('2d');
 
       if (context) {
@@ -254,7 +254,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         this.listimages.push(canvas);
         console.log(this.listimages);
         // this.imagesD.push("asdasd",nameimg)
-        this.imagesD.push(nameimg)
+        this.imagesD.push()
 
       }
       console.log(this.imagesD);
