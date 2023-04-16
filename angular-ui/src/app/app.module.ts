@@ -24,11 +24,12 @@ import { ImageEditorModule } from '@syncfusion/ej2-angular-image-editor';
 import { NgImageSliderModule } from 'ng-image-slider';
 
 import { RouterModule } from '@angular/router';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ConfirmationDialogComponent } from './page/confirmation-dialog/confirmation-dialog.component';
-
+// import { DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,8 @@ import { ConfirmationDialogComponent } from './page/confirmation-dialog/confirma
   ],
   imports: [
     // CanvasDomModule,
+    DatePipe,
+    MatDialogModule,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,

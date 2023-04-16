@@ -6,26 +6,27 @@
 <div class="container">
   <div class="row" style="margin-top: 50px;">
     <div class="col-sm-5">
+      <h1 style=" font-family: Superspace;">{{myDate}}</h1>
+      <div *ngIf="!isShowG">
+        <!-- <canvas #canvas style="border: 1px solid" width="500" height="500">
+                                        imgsss
+        </canvas> -->
+        <img src={{imageuser}} alt="" width="500px" height="500px">
 
-      <canvas #canvas style="border: 1px solid" width="500" height="500">
-        imgsss
-      </canvas>
+      </div>
 
-      <div style="width: 500px;height: 500px;">
-        {{isShowG}}
-        <mdb-carousel [animation]="'slide'" [interval]="0">
-          <mdb-carousel-item *ngFor="let a of All;index as i; trackBy:trackByFn">
+      <div style="width: 500px;height: 500px;" *ngIf="isShowG">
+        <!-- {{isShowG}} -->
+        <mdb-carousel [animation]="'slide'" [isControls]="true">
+          <mdb-carousel-item *ngFor="let a of ALL1;index as i; trackBy:trackByFn">
             <canvas attr.id="canvas-{{i}}" width="500" height="500">
             </canvas>
-            <div class="carousel-caption d-none d-md-block">
+            <!-- <div class="carousel-caption d-none d-md-block">
               {{a.name}}
-            </div>
+            </div> -->
           </mdb-carousel-item>
-          </mdb-carousel>
-          </div>
-
-
-
+        </mdb-carousel>
+        </div>
 
       <div class="row" style="margin-top: 50px; width: 100%;;">
         <div class="col-sm" style="display: grid; margin: auto;">
@@ -93,47 +94,6 @@
 
       </div>
       <hr>
-      <!--
-      <div class="row">
-        <div class="col-sm">
-          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
-              <p style="font-family: K2D;margin: 0px;"> ALL รายวัน</p>
-            </mat-checkbox>
-          </section>
-          </div>
-          <div class="col-sm">
-          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
-              <p style="font-family: K2D;margin: 0px;">ALL หุ้น</p>
-            </mat-checkbox>
-          </section>
-          </div>
-
-        <div class="col-sm">
-          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
-              <p style="font-family: K2D;margin: 0px;">ALL VIP</p>
-            </mat-checkbox>
-          </section>
-          </div>
-          <div class="col-sm">
-          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
-              <p style="font-family: K2D;margin: 0px;">ALL ต่างประเทศ</p>
-            </mat-checkbox>
-          </section>
-          </div>
-          <div class="col-sm">
-          <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
-            <mat-checkbox class="example-margin" [disabled]="false" style="margin: -5px;">
-              <p style="font-family: K2D;margin: 0px;">ALL รัฐบาล</p>
-            </mat-checkbox>
-          </section>
-          </div>
-          </div> -->
-
-
       <div class="row" style="margin-top: 20px;">
         <div class="col-sm-3">
           <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
@@ -144,8 +104,8 @@
         </div>
         <div class="col-sm-9">
           <section class="example-section" style="margin: 0px;font-family:K2D, sans-serif;">
-            <button type="button" (click)="createImage()" class="btn btn-success" style="margin-top:0px">Create
-              Image</button>
+            <!-- <button type="button" (click)="createImage()" class="btn btn-success" style="margin-top:0px">Create
+                                                              Image</button> -->
             <button type="button" (click)="Cimg(ALL1)" class="btn btn-success" style="margin-top:0px">Gent
               Image</button>
             <button type="button" class="btn btn-outline-primary" style="margin-top: 0px;margin-left: 20px;">Check
