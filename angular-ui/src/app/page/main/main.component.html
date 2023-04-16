@@ -7,38 +7,23 @@
   <div class="row" style="margin-top: 50px;">
     <div class="col-sm-5">
 
-      <!-- <img src="{{imageuser}}" alt="" width="500" height="500"> -->
-      <!-- <canvas #canvas width="500" height="500"></canvas>
-                                                            <br />
-                                                            <button (click)="drawImages()">Draw Images</button>
-                                                            <canvas id="test" style="border: 1px solid blue;"></canvas>
-                                                            <br> -->
-
       <canvas #canvas style="border: 1px solid" width="500" height="500">
         imgsss
       </canvas>
 
+      <div style="width: 500px;height: 500px;">
+        {{isShowG}}
+        <mdb-carousel [animation]="'slide'" [interval]="0">
+          <mdb-carousel-item *ngFor="let a of All;index as i; trackBy:trackByFn">
+            <canvas attr.id="canvas-{{i}}" width="500" height="500">
+            </canvas>
+            <div class="carousel-caption d-none d-md-block">
+              {{a.name}}
+            </div>
+          </mdb-carousel-item>
+          </mdb-carousel>
+          </div>
 
-      <div *ngFor="let img of listimages let i = index">
-        <p>{{i}}{{img}}</p>
-        <canvas #Arraycanvas style="border: 1px solid" width="500" height="500">
-          imgsss
-        </canvas>
-      </div>
-<!--
-      <div *ngFor="let a of arrayOfIndexes;index as i; trackBy:trackByFn">
-        <canvas attr.id="canvas-{{i}}" (click)="myDrawingFunction(i)" width="500" height="500"></canvas>
-      </div> -->
-
-<div *ngFor="let a of arrayOfIndexes;index as i; trackBy:trackByFn">
-  <canvas attr.id="canvas-{{i}}" width="500" height="500"></canvas>
-</div>
-
-
-      <!-- <div *ngFor="let image of imagesD">
-        <img [src]="image.src" [alt]="image.alt" class="image-with-text" width="500" height="500">
-        <button (click)="downloadImage(image.src, image.alt)">Download</button>
-      </div> -->
 
 
 

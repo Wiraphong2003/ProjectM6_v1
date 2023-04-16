@@ -21,17 +21,29 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ImageEditorModule } from '@syncfusion/ej2-angular-image-editor';
 // import { CanvasDomModule } from 'angular-canvas';
-
+import { NgImageSliderModule } from 'ng-image-slider';
 
 import { RouterModule } from '@angular/router';
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ConfirmationDialogComponent } from './page/confirmation-dialog/confirmation-dialog.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     // CanvasDomModule,
+    BrowserModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+    MDBBootstrapModule,
+    NgImageSliderModule,
     RouterModule,
     ImageEditorModule,
     BrowserModule,
@@ -50,6 +62,7 @@ import { RouterModule } from '@angular/router';
     MatCheckboxModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

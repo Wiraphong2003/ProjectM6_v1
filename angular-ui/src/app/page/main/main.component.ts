@@ -40,9 +40,8 @@ export class MainComponent implements AfterViewInit, OnInit {
     { src: '' + this.local.getData("img1"), alt: 'Image 2' },
     { src: '' + this.local.getData("img1"), alt: 'Image 3' },
   ];
-
-
-
+  imageDowload: Image[] = []
+  isShowG = false;
   Lottary !: any;
   t1 !: any;
   t2 !: any;
@@ -51,7 +50,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   t5 !: any;
   t6 !: any;
   type !: any;
-  All !: any[];
+  All : any[]=[];
   checked = false;
   ALL1: any[] = [];
   chk: any[] = []
@@ -62,6 +61,34 @@ export class MainComponent implements AfterViewInit, OnInit {
   listImage: any[] = []
   arrayOfIndexes: any[] = []
   listimages: HTMLCanvasElement[] = [];
+  imgCollection: Array<object> = [
+    {
+      image: 'https://loremflickr.com/g/600/400/paris',
+      thumbImage: 'https://loremflickr.com/g/1200/800/paris',
+      alt: 'Image 1',
+      title: 'Image 1'
+    }, {
+      image: 'https://loremflickr.com/600/400/brazil,rio',
+      thumbImage: 'https://loremflickr.com/1200/800/brazil,rio',
+      title: 'Image 2',
+      alt: 'Image 2'
+    }, {
+      image: 'https://loremflickr.com/600/400/paris,girl/all',
+      thumbImage: 'https://loremflickr.com/1200/800/brazil,rio',
+      title: 'Image 3',
+      alt: 'Image 3'
+    }, {
+      image: 'https://loremflickr.com/600/400/brazil,rio',
+      thumbImage: 'https://loremflickr.com/1200/800/brazil,rio',
+      title: 'Image 4',
+      alt: 'Image 4'
+    }, {
+      image: 'https://loremflickr.com/600/400/paris,girl/all',
+      thumbImage: 'https://loremflickr.com/1200/800/paris,girl/all',
+      title: 'Image 5',
+      alt: 'Image 5'
+    }
+  ];
 
 
 
@@ -116,30 +143,41 @@ export class MainComponent implements AfterViewInit, OnInit {
     return (index);
   }
   async Cimg(ee: any) {
+    this.All = this.arrayOfIndexes.filter(item => item !== item);
+    console.log(ee);
+    ee.forEach((element: any) => {
+      this.All.push(element)
+    });
+    this.isShowG = true;
     this.arrayOfIndexes = this.arrayOfIndexes.filter(item => item !== item);
     this.listimages = this.listimages.filter(item => item !== item);
     console.log(ee);
 
-    for (let index = 0; index < this.ALL1.length; index++) {
+    for (let index = 0; index < ee.length; index++) {
       const element = this.ALL1[index];
       const nameimg = element.name;
       console.log(nameimg);
-      this.arrayOfIndexes.push(index)
+
+      // this.arrayOfIndexes.push(index)
+      // console.log(this.arrayOfIndexes);
+
 
       let canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
       const context = canvas.getContext('2d')
+
       if (context) {
         context.clearRect(0, 0, canvas.width, canvas.height);
         context.strokeStyle = 'red';
         context.fillStyle = 'rgba(17, 0, 255, 0.5)';
-        const img = await this.loadImage(this.local.getData("img1") + '');
+
+        const imgs = await (this.loadImage(this.local.getData("img1") + ''));
 
         // Calculate the new width and height
         const newWidth = 500;
-        const newHeight = (img.height / img.width) * newWidth;
+        const newHeight = (imgs.height / imgs.width) * newWidth;
 
         // Draw the resized image on the canvas
-        this.ctx.drawImage(img, 0, 0, newWidth, newHeight);
+        context.drawImage(imgs, 0, 0, newWidth, newHeight);
         let w = 500;
         let h = 500;
         let lenHH = nameimg.length;
@@ -166,8 +204,6 @@ export class MainComponent implements AfterViewInit, OnInit {
           context.fillText(element, (80 * index) + 90, 350);
         });
         console.log("imgs " + this.ctx);
-
-
         // Convert the canvas to an image and add it to the array
         // images.push(await this.canvasToImage(canvas, nameimg));
         console.log(canvas);
@@ -177,6 +213,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     }
 
   }
+
   async myDrawingFunction(index: number) {
     //here you retrieve your element by id eg: '#canvas-2'
     let canvas = <HTMLCanvasElement>this.el.nativeElement.querySelector('#canvas-' + index);
@@ -404,7 +441,6 @@ export class MainComponent implements AfterViewInit, OnInit {
         resolve(img);
       img.onerror = reject;
       img.src = url;
-
     });
   }
 
